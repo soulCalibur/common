@@ -23,5 +23,62 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-broker</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-client</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-common</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-example</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-filtersrv</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-namesrv</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-remoting</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-srvutil</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-store</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ht.rocketmq</groupId>
+			<artifactId>rocketmq-tools</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.21</version>
+		</dependency>
 	</dependencies>
+
 </project>
