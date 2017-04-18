@@ -1,0 +1,27 @@
+安装Rabbit MQ
+http://erlang.org/download/otp_win32_R16B03.exe
+http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.9/rabbitmq-server-3.6.9.exe
+
+Rabbit MQ 是建立在强大的Erlang OTP平台上，因此安装Rabbit MQ的前提是安装Erlang。通过下面两个连接下载安装3.2.3 版本：
+
+    下载并安装 Eralng OTP For Windows (vR16B03)
+    运行安装 Rabbit MQ Server Windows Installer (v3.2.3)
+
+默认安装的Rabbit MQ 监听端口是5672
+
+
+命令目录:C:\RabbitMQ Server\...\sbin\
+
+使用Rabbit MQ 管理插件，可以更好的可视化方式查看Rabbit MQ 服务器实例的状态，你可以在命令行中使用下面的命令激活：
+激活Rabbit MQ's Management Plugin
+rabbitmq-plugins.bat enable rabbitmq_management
+
+要重启服务才能生效，可以执行
+net stop RabbitMQ && net start RabbitMQ
+
+-----sbin 命令
+rabbitmqctl.bat list_users
+rabbitmqctl.bat list_vhosts 
+rabbitmqctl.bat add_user yonghu mima
+rabbitmqctl.bat set_user_tags yonghu administrator 
+rabbitmqctl.bat set_permissions -p /  yonghu ".*" ".*" ".*"

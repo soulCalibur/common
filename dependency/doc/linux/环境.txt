@@ -1,0 +1,90 @@
+ svn查看版本号：
+
+svn --version
+
+先删除旧版本
+
+yum remove subversion
+
+更新subversion源
+查看yum包
+rpm -qa|grep yum
+卸载之
+rpm -qa|grep yum|xargs rpm -e --nodeps
+
+2、下载新的yum包
+64位linux系统下载安装包
+wget http://centos.ustc.edu.cn/centos/5/os/x86_64/CentOS/yum-3.2.22-40.el5.centos.noarch.rpm
+wget http://centos.ustc.edu.cn/centos/5/os/x86_64/CentOS/yum-fastestmirror-1.1.16-21.el5.centos.noarch.rpm
+wget http://centos.ustc.edu.cn/centos/5/os/x86_64/CentOS/yum-metadata-parser-1.1.2-4.el5.x86_64.rpm
+wget http://mirror.centos.org/centos-5/5/os/i386/CentOS/python-iniparse-0.2.3-4.el5.noarch.rpm
+32位linux系统下载安装包
+wget http://centos.ustc.edu.cn/centos/5/os/i386/CentOS/yum-3.2.22-40.el5.centos.noarch.rpm
+wget http://centos.ustc.edu.cn/centos/5/os/i386/CentOS/yum-fastestmirror-1.1.16-21.el5.centos.noarch.rpm
+wget http://centos.ustc.edu.cn/centos/5/os/i386/CentOS/yum-metadata-parser-1.1.2-4.el5.i386.rpm
+
+注意：安装包可能会升级，最后的文件名可以通过最新路径下查看得到，例如：
+http://centos.ustc.edu.cn/centos/5/os/x86_64/CentOS/
+http://centos.ustc.edu.cn/centos/5/os/i386/CentOS/
+
+然后进行安装
+rpm -ivh yum-*
+注意：yum和yum-fastestmirror相互依赖，所以同时安装即可。
+3、下载yum的配置源
+wget http://docs.linuxtone.org/soft/lemp/CentOS-Base.repo 下载到 /etc/yum.repos.d/ 目录下面
+
+4、运行yum makecache生成缓存
+
+
+
+在 /etc/yum.repos.d/ 创建源文件 wandisco-svn1.8.repo
+[WANdisco]
+name=WANdisco SVN Repo 1.8
+enabled=1
+baseurl=http://opensource.wandisco.com/rhel/6/svn-1.8/RPMS/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-WANdisco
+
+然后导入GPG-KEY
+
+
+wget http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco
+rpm --import RPM-GPG-KEY-WANdisco
+
+再进行安装：
+
+
+yum update
+yum -y install subversion
+
+
+ 在Linux下安装Redis非常简单，具体步骤如下（官网有说明）：
+
+$ wget http://download.redis.io/releases/redis-2.8.3.tar.gz
+$ tar xzf redis-2.8.3.tar.gz
+$ cd redis-2.8.3
+$ make
+
+2、编译完成后，在Src目录下，有四个可执行文件redis-server、redis-benchmark、redis-cli和redis.conf。然后拷贝到一个目录下。
+
+mkdir /usr/redis
+cp redis-server  /usr/redis
+cp redis-benchmark /usr/redis
+cp redis-cli  /usr/redis
+cp redis.conf  /usr/redis
+cd /usr/redis
+
+     3、启动Redis服务。
+
+$ redis-server   redis.conf
+
+     4、然后用客户端测试一下是否启动成功。
+
+$ redis-cli
+redis> set foo bar
+OK
+redis> get foo
+"bar"
+
+
+

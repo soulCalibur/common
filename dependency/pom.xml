@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ht.dependency</groupId>
+	<artifactId>ht-dependency</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>我的maven版本控制</name>
+	<url>http://maven.apache.org</url>
+	<!-- <mirror> <id>nexus-aliyun</id> <mirrorOf>*</mirrorOf> <name>Nexus aliyun</name> 
+		<url>http://maven.aliyun.com/nexus/content/groups/public</url> </mirror> -->
+	<repositories>
+		<repository>
+			<id>nexus-aliyun</id>
+			<name>Nexus aliyun</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<!-- ************************个人私服***************** -->
+		<repository>
+			<id>my_maven_addres</id>
+			<url>https://raw.github.com/soulCalibur/maven/master/repo</url>
+		</repository>
+		<!-- ***********************个人私服****************** -->
+		<!-- ***************************************** -->
+		<repository>
+			<id>ibiblio</id>
+			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
+		</repository>
+		<!-- ***************************************** -->
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>my_maven_addres</id>
+			<url>https://raw.github.com/soulCalibur/maven/master/repo</url>
+			<name>my_maven_addres</name>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>nexus-aliyun</id>
+			<name>Nexus aliyun</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+
+
+
+	</pluginRepositories>
+
+	<distributionManagement>
+		<repository>
+			<id>ht-maven-repo</id>
+			<url>file:target/self-repo-temp</url>
+		</repository>
+	</distributionManagement>
+
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jar.out.home>../</jar.out.home>
+		<junit.version>4.11</junit.version>
+		<spring.version>4.2.5.RELEASE</spring.version>
+		<spring-support.version>2.0.8</spring-support.version>
+		<spring-data-redis.version>1.8.1.RELEASE</spring-data-redis.version>
+		<activemq.version>5.10.0</activemq.version>
+		<jackson.version>2.5.1</jackson.version>
+		<jackson-mapper-asl.version>1.9.9</jackson-mapper-asl.version>
+		<jedis.version>2.9.0</jedis.version>
+		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<jdbc.version>11.2.0.4.0</jdbc.version>
+		<c3p0.version>0.9.1.2</c3p0.version>
+		<alibaba.druid.version>1.0.18</alibaba.druid.version>
+		<log4j.version>1.2.17</log4j.version>
+		<logback.version>1.1.2</logback.version>
+		<dom4j.version>1.6.1</dom4j.version>
+		<pagehelper.version>4.1.4</pagehelper.version>
+		<jstl.version>1.2</jstl.version>
+		<slf4j-api.version>1.7.7</slf4j-api.version>
+		<validation-api.version>1.1.0.Final</validation-api.version>
+		<hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
+		<quartz.version>2.2.1</quartz.version>
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<commons-lang3.version>3.5</commons-lang3.version>
+		<servlet-api.version>2.5</servlet-api.version>
+		<jsp-api.version>2.1</jsp-api.version>
+		<ice.version>3.4.1</ice.version>
+		<springfox-swagger2.version>2.5.0</springfox-swagger2.version>
+		<springfox-swagger-ui.version>2.5.0</springfox-swagger-ui.version>
+		<swagger-annotations.version>1.5.9</swagger-annotations.version>
+		<classmate.version>1.3.1</classmate.version>
+		<solr-solrj.version>5.2.1</solr-solrj.version>
+		<ik-analyzer.version>5.2.1</ik-analyzer.version>
+		<lucene-core.version>5.2.1</lucene-core.version>
+		<pinyin4j.version>2.5.0</pinyin4j.version>
+		<javacv.version>1.1</javacv.version>
+		<httpclient.version>4.5.1</httpclient.version>
+		<thumbnailator.version>0.4.8</thumbnailator.version>
+		<gif4j-pro.version>2.0</gif4j-pro.version>
+		<javamelody-core.version>1.62.0</javamelody-core.version>
+		<jrobin.version>1.5.9</jrobin.version>
+		<membercenter.version>1.1.3</membercenter.version>
+		<sns.version>1.0.0-SNAPSHOT</sns.version>
+		<slice.version>1.0.0-SNAPSHOT</slice.version>
+		<snsunion.version>1.0.0-SNAPSHOT</snsunion.version>
+		<ice-customer.version>1.0.0-SNAPSHOT</ice-customer.version>
+		<ice-server.version>1.0.0-SNAPSHOT</ice-server.version>
+		<clean-dal.version>1.0.0-SNAPSHOT</clean-dal.version>
+		<joda-time.version>2.7</joda-time.version>
+		<slf4j.version>1.7.21</slf4j.version>
+		<slf4j-log4j12.version>1.7.13</slf4j-log4j12.version>
+		<logback-extensions.version>0.1.4</logback-extensions.version>
+		<guava.version>18.0</guava.version>
+		<gson.version>2.3.1</gson.version>
+		<commons-io.version>2.2</commons-io.version>
+		<commons-pool2.version>2.2</commons-pool2.version>
+		<commons-codec.version>1.10</commons-codec.version>
+		<json-lib.version>2.1</json-lib.version>
+		<commons-logging.version>1.2</commons-logging.version>
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<commons-beanutils.version>1.9.2</commons-beanutils.version>
+		<spring-session.version>1.2.2.RELEASE</spring-session.version>
+		<freemarker.version>2.3.22</freemarker.version>
+		<spring-data-mongodb.version>1.8.4.RELEASE</spring-data-mongodb.version>
+		<mongo-java-driver.version>2.13.0</mongo-java-driver.version>
+		<curator.version>2.8.0</curator.version>
+		<ueditor.version>1.1.2</ueditor.version>
+		<org.json.version>20160810</org.json.version>
+		<org.springframework.data>1.2.0.RELEASE</org.springframework.data>
+		<commons-net.version>3.3</commons-net.version>
+		<logstash-logback-encoder.version>4.8</logstash-logback-encoder.version>
+		<javax.mail.version>1.4.7</javax.mail.version>
+		<hczy.sdk.version>0.0.1</hczy.sdk.version>
+		<rome.version>1.7.1</rome.version>
+	</properties>
+	<!-- 统一依赖管理 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.ht.common</groupId>
+				<artifactId>ice-common-core</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Brixton.SR5</version><!--Brixton.SR5 Angel.SR6 -->
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-commons-core</artifactId>
+				<version>${org.springframework.data}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.common.components.redis</groupId>
+				<artifactId>redis-cache-server</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>clean-cache</artifactId>
+				<version>${clean-dal.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-support</artifactId>
+				<version>${spring-support.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-oxm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.session</groupId>
+				<artifactId>spring-session</artifactId>
+				<version>${spring-session.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-mongodb</artifactId>
+				<version>${spring-data-mongodb.version}</version>
+			</dependency>
+			<!-- activeMQ -->
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-pool</artifactId>
+				<version>${activemq.version}</version>
+			</dependency>
+
+			<!-- ice -->
+			<dependency>
+				<groupId>com.zeroc</groupId>
+				<artifactId>ice</artifactId>
+				<version>${ice.version}</version>
+			</dependency>
+
+			<!-- spring MVC 依赖的 json数据返回 -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-xml</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<!-- 旧版 jackson -->
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${jackson-mapper-asl.version}</version>
+			</dependency>
+			<!-- jedis -->
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>${jedis.version}</version>
+			</dependency>
+			<!-- spring-data-redis -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>${spring-data-redis.version}</version>
+			</dependency>
+
+			<!-- mybatis -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis-spring.version}</version>
+			</dependency>
+
+			<!-- 分页插件 -->
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper</artifactId>
+				<version>${pagehelper.version}</version>
+			</dependency>
+
+			<!-- oracle JDBC 驱动 -->
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc16</artifactId>
+				<version>${jdbc.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>c3p0</groupId>
+				<artifactId>c3p0</artifactId>
+				<version>${c3p0.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${alibaba.druid.version}</version>
+			</dependency>
+			<!-- 日志 -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j-log4j12.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>${dom4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${servlet-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>${jsp-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- jstl标签 -->
+			<dependency>
+				<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+
+			<!-- springMVC 数据验证 -->
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${validation-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate-validator.version}</version>
+			</dependency>
+
+			<!-- swagger2 -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${springfox-swagger2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>${swagger-annotations.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${springfox-swagger-ui.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml</groupId>
+				<artifactId>classmate</artifactId>
+				<version>${classmate.version}</version>
+			</dependency>
+			<!-- 缩略图 -->
+			<dependency>
+				<groupId>net.coobird</groupId>
+				<artifactId>thumbnailator</artifactId>
+				<version>${thumbnailator.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.gif4j</groupId>
+				<artifactId>gif4j-pro</artifactId>
+				<version>${gif4j-pro.version}</version>
+			</dependency>
+			<!-- httpClient -->
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpmime</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+			<!-- javacv -->
+			<dependency>
+				<groupId>org.bytedeco</groupId>
+				<artifactId>javacv</artifactId>
+				<version>${javacv.version}</version>
+			</dependency>
+			<!-- solr -->
+			<dependency>
+				<groupId>org.apache.solr</groupId>
+				<artifactId>solr-solrj</artifactId>
+				<version>${solr-solrj.version}</version>
+			</dependency>
+			<!--分词 -->
+			<dependency>
+				<groupId>org.wltea.ik-analyzer</groupId>
+				<artifactId>ik-analyzer</artifactId>
+				<version>${ik-analyzer.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-core</artifactId>
+				<version>${lucene-core.version}</version>
+			</dependency>
+			<!-- java拼音插件 -->
+			<dependency>
+				<groupId>com.belerweb</groupId>
+				<artifactId>pinyin4j</artifactId>
+				<version>${pinyin4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.bull.javamelody</groupId>
+				<artifactId>javamelody-core</artifactId>
+				<version>${javamelody-core.version}</version>
+			</dependency>
+			<!-- 监控系统 -->
+			<dependency>
+				<groupId>org.jrobin</groupId>
+				<artifactId>jrobin</artifactId>
+				<version>${jrobin.version}</version>
+			</dependency>
+			<!-- 调度 -->
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+
+			<!-- membercenter -->
+			<dependency>
+				<groupId>com.hhly</groupId>
+				<artifactId>membercenter</artifactId>
+				<version>${membercenter.version}</version>
+			</dependency>
+
+			<!-- projects -->
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-parent</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-vo</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-base</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-web-utils</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-utils</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>video-utils</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-dal</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-mq</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-solr</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-mongo</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>slice-city</artifactId>
+				<version>${slice.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>slice-team</artifactId>
+				<version>${slice.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>slice-user</artifactId>
+				<version>${slice.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>slice-commons</artifactId>
+				<version>${slice.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>city-service</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>commons-service</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>slice-info</artifactId>
+				<version>${slice.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>info-service</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>slice-video</artifactId>
+				<version>${slice.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>video-service</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>slice-org</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns</groupId>
+				<artifactId>sns-push</artifactId>
+				<version>${sns.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hhly.sns.union</groupId>
+				<artifactId>cms-biz</artifactId>
+				<version>${snsunion.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${joda-time.version}</version>
+			</dependency>
+
+			<!-- 代码直接调用log4j会被桥接到slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<!-- 代码直接调用commons-logging会被桥接到slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<!-- 代码直接调用java.util.logging会被桥接到slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<!-- 把spring日志桥接到 slf4j 中 -->
+			<dependency>
+				<groupId>org.logback-extensions</groupId>
+				<artifactId>logback-ext-spring</artifactId>
+				<version>${logback-extensions.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-pool2</artifactId>
+				<version>${commons-pool2.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sf.json-lib</groupId>
+				<artifactId>json-lib</artifactId>
+				<version>${json-lib.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons-logging.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${commons-beanutils.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>${freemarker.version}</version>
+			</dependency>
+
+			<!-- ICE客户端封装 -->
+			<dependency>
+				<groupId>com.hhly.common.components.ice</groupId>
+				<artifactId>ice-customer</artifactId>
+				<version>${ice-customer.version}</version>
+			</dependency>
+			<!-- ICE服务端封装 -->
+			<dependency>
+				<groupId>com.hhly.common.components.ice</groupId>
+				<artifactId>ice-server</artifactId>
+				<version>${ice-server.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hhly.common.components.ice</groupId>
+				<artifactId>ice-commons</artifactId>
+				<version>${ice-server.version}</version>
+			</dependency>
+			<!-- mongondb -->
+			<dependency>
+				<groupId>org.mongodb</groupId>
+				<artifactId>mongo-java-driver</artifactId>
+				<version>${mongo-java-driver.version}</version>
+			</dependency>
+
+			<!-- ueditor -->
+			<dependency>
+				<groupId>com.baidu</groupId>
+				<artifactId>ueditor</artifactId>
+				<version>${ueditor.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.json</groupId>
+				<artifactId>json</artifactId>
+				<version>${org.json.version}</version>
+			</dependency>
+			<!-- zookeeper client -->
+			<dependency>
+				<groupId>org.apache.curator</groupId>
+				<artifactId>curator-framework</artifactId>
+				<version>${curator.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>${commons-net.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.logstash.logback</groupId>
+				<artifactId>logstash-logback-encoder</artifactId>
+				<version>${logstash-logback-encoder.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>${javax.mail.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hczy</groupId>
+				<artifactId>sdk</artifactId>
+				<version>${hczy.sdk.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.rometools</groupId>
+				<artifactId>rome</artifactId>
+				<version>${rome.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${jar.out.home}dependency/jar/${project.artifactId}</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.ht.maven.plugin</groupId>
+				<artifactId>git-deploy</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<url>https://github.com/soulCalibur/maven</url>
+					<user>soulCalibur</user>
+					<password>--------------</password>
+					<child>repo</child>
+				</configuration>
+				<executions>
+					<execution>
+
+						<goals>
+							<goal>deploy2git</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
